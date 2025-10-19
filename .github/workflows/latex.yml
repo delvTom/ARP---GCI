@@ -1,0 +1,40 @@
+name: Build & Commit PDF
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: write   # nécessaire pour pousser sur le repo
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup TeX Live
+        uses: teatimeguest/setup-texlive-action@v3
+        with:
+          packages: >-
+            scheme-small
+            latexmk
+            babel-english
+            amsmath
+            amssymb
+            amsthm
+            geometry
+            graphicx
+            xcolor
+            hyperref
+            titling
+
+      - name: Compile LaTeX
+        run: latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+
+      - name: Commit main.pdf back to repo
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "CI: update main.pdf"
+          file_pattern: main.pdf
