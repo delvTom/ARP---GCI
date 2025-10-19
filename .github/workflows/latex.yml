@@ -2,10 +2,10 @@ name: Build & Commit PDF
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "master" ]
 
 permissions:
-  contents: write   # nécessaire pour pousser sur le repo
+  contents: write
 
 jobs:
   build:
@@ -14,24 +14,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup TeX Live
-        uses: teatimeguest/setup-texlive-action@v3
+      # Utilise LuaLaTeX (gère mieux l’UTF-8 que pdflatex)
+      - name: Build LaTeX
+        uses: xu-cheng/latex-action@v3
         with:
-          packages: >-
-            scheme-small
-            latexmk
-            babel-english
-            amsmath
-            amssymb
-            amsthm
-            geometry
-            graphicx
-            xcolor
-            hyperref
-            titling
-
-      - name: Compile LaTeX
-        run: latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+          root_file: main.tex
+          latexmk_use_lualatex: true
+          # si tu veux rester en pdfLaTeX: commente la ligne ci-dessus et ajoute \usepackage[utf8]{inputenc} dans ton .tex
 
       - name: Commit main.pdf back to repo
         uses: stefanzweifel/git-auto-commit-action@v5
