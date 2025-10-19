@@ -1,7 +1,5 @@
 # ARP — Gaussian Correlation Inequality
 
-[![Build PDF](https://github.com/USER/REPO/actions/workflows/latex.yml/badge.svg)](../../actions/workflows/latex.yml)
-
 📄 **PDF** : [main.pdf](./main.pdf)
 
 ---
