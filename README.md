@@ -1,3 +1,9 @@
+# ARP — Gaussian Correlation Inequality
+
+📄 **PDF** : [main.pdf](./main.pdf)
+
+
+
 # Gaussian Correlation Inequality — TER (UPEC)
 
 This repository contains my Academic Research Project on the Gaussian Correlation Inequality (GCI).
