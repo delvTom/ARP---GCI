@@ -1,0 +1,32 @@
+
+# 6) (Optionnel) Compiler automatiquement le PDF avec GitHub Actions
+Ça te permet d’avoir un PDF toujours à jour dans les “Artifacts”, sans rien installer.
+
+1) Dans ton repo GitHub : **Add file → Create new file**  
+   Nom du fichier : `.github/workflows/latex.yml`  
+2) Colle ceci :
+```yaml
+name: Build LaTeX
+
+on:
+  push:
+    paths:
+      - '**.tex'
+      - 'photo.png'
+      - '.github/workflows/latex.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          latexmk_use_xelatex: false
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gci-ter-pdf
+          path: main.pdf
