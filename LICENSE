@@ -1,10 +1,7 @@
 
-# 6) (Optionnel) Compiler automatiquement le PDF avec GitHub Actions
-Ça te permet d’avoir un PDF toujours à jour dans les “Artifacts”, sans rien installer.
 
-1) Dans ton repo GitHub : **Add file → Create new file**  
-   Nom du fichier : `.github/workflows/latex.yml`  
-2) Colle ceci :
+   
+
 ```yaml
 name: Build LaTeX
 
