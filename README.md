@@ -4,7 +4,7 @@
 
 ---
 
-## Gaussian Correlation Inequality — TER (UPEC)
+## Gaussian Correlation Inequality — TER 
 
 This repository contains my Academic Research Project (TER) on the **Gaussian Correlation Inequality (GCI)**.
 It includes:
@@ -13,4 +13,3 @@ It includes:
 - a Laplace-transform approach,
 - and a streamlined presentation of Royen’s proof.
 
-### Arborescence
